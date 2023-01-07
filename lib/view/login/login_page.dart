@@ -8,6 +8,7 @@ import 'package:quicksummary/resources/color_manager.dart';
 import 'package:quicksummary/resources/font_manager.dart';
 import 'package:quicksummary/resources/string_manager.dart';
 import 'package:quicksummary/resources/textstyle_manager.dart';
+import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
 import 'package:rive/rive.dart';
 
 class LoginPage extends StatefulWidget {
@@ -75,7 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
                           backgroundColor: ColorManager.lightGreen),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await AuthService().googleSignIn(context);
+                      },
                       icon: Icon(
                         FontAwesomeIcons.google,
                         color: ColorManager.white,

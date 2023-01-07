@@ -70,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '878573760241',
     projectId: 'quicksummary-e85ef',
     storageBucket: 'quicksummary-e85ef.appspot.com',
-    iosClientId: '878573760241-65j1rifqkls0glqthmbamagqu36a9qao.apps.googleusercontent.com',
+    iosClientId:
+        '878573760241-65j1rifqkls0glqthmbamagqu36a9qao.apps.googleusercontent.com',
     iosBundleId: 'com.example.quicksummary',
   );
 }
