@@ -51,6 +51,21 @@ class _LoginPageState extends State<LoginPage> {
                           color: ColorManager.white)),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                child: Text(
+                  StringManager.about,
+                  style: GoogleFonts.ubuntu(
+                    textStyle: getRegularTextStyle(
+                        fontSize: FontSizeManager.f14,
+                        color: ColorManager.white),
+                  ),
+                ),
+              ),
               const Spacer(),
               SizedBox(
                   width: 300,
