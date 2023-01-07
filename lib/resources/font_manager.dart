@@ -1,4 +1,4 @@
-class FontManager {
+class FontSizeManager {
   static double f8 = 8.0;
   static double f10 = 8.0;
   static double f12 = 8.0;
