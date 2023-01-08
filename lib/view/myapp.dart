@@ -1,18 +1,25 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quicksummary/repository/wrapper.dart';
 import 'package:quicksummary/resources/theme_manager.dart';
-import 'package:quicksummary/view/login/login_page.dart';
-
-import 'homepage/homepage.dart';
+import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: getApplicationThemeData(),
-      debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+    return MultiProvider(
+      providers: [
+        StreamProvider<User?>.value(
+            value: AuthService().authState, initialData: null)
+      ],
+      child: MaterialApp(
+        theme: getApplicationThemeData(),
+        debugShowCheckedModeBanner: false,
+        home: const Wrapper(),
+      ),
     );
   }
 }

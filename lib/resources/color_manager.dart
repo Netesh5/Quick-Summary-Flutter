@@ -14,5 +14,5 @@ class ColorManager {
   static Color white = const Color(0xFFFFFFFF);
   static Color error = const Color(0xFFe61f34);
 
-  static Color lightGreen = Color(0xFF093F30);
+  static Color lightGreen = const Color(0xFF093F30);
 }
