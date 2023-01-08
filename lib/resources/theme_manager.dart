@@ -9,7 +9,7 @@ ThemeData getApplicationThemeData() {
   return ThemeData(
       splashColor: Colors.transparent,
       appBarTheme: AppBarTheme(
-          color: ColorManager.white,
+          color: ColorManager.lightBGWhiteColor,
           centerTitle: true,
           elevation: 0,
           titleTextStyle: getRegularTextStyle(
@@ -17,6 +17,8 @@ ThemeData getApplicationThemeData() {
               fontSize: FontSizeManager.f18)),
       iconTheme: IconThemeData(color: ColorManager.primaryFontcolor),
       inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: ColorManager.white,
           contentPadding: const EdgeInsets.all(PaddingManager.p8),
           hintStyle: getRegularTextStyle(
               color: ColorManager.grey1, fontSize: FontSizeManager.f8),

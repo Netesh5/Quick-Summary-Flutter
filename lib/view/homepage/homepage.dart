@@ -5,6 +5,7 @@ import 'package:quicksummary/resources/color_manager.dart';
 import 'package:quicksummary/resources/font_manager.dart';
 import 'package:quicksummary/resources/string_manager.dart';
 import 'package:quicksummary/resources/textStyle_manager.dart';
+import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
 
 import 'widgets/appbar.dart';
 
@@ -35,8 +36,10 @@ class Homepage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              decoration:
-                  const InputDecoration(label: Text(StringManager.labelText)),
+              cursorColor: ColorManager.lightGreen,
+              decoration: const InputDecoration(
+                label: Text(StringManager.labelText),
+              ),
               minLines: 5,
               maxLines: 20,
             ),
@@ -59,7 +62,14 @@ class Homepage extends StatelessWidget {
                   style: getRegularTextStyle(
                       fontSize: FontSizeManager.f18, color: ColorManager.white),
                 )),
-          ))
+          )),
+          IconButton(
+              onPressed: () async {
+                await AuthService().googleLogOut(context);
+              },
+              icon: const Icon(
+                Icons.logout,
+              ))
         ],
       ),
     );

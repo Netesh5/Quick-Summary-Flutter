@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quicksummary/resources/color_manager.dart';
+import 'package:quicksummary/resources/value_manger.dart';
 import '../../../repository/user_details.dart';
 import '../../../resources/font_manager.dart';
 import '../../../resources/string_manager.dart';
