@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quicksummary/data/network/network_service.dart';
 import 'package:quicksummary/repository/user_details.dart';
 import 'package:quicksummary/resources/color_manager.dart';
 import 'package:quicksummary/resources/font_manager.dart';
@@ -10,7 +11,7 @@ import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
 import 'widgets/appbar.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({Key? key}) : super(key: key);
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +37,16 @@ class Homepage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: controller,
               cursorColor: ColorManager.lightGreen,
               decoration: const InputDecoration(
                 label: Text(StringManager.labelText),
               ),
               minLines: 5,
               maxLines: 20,
+              onChanged: (value) {
+                Inputvalue.value = controller.text;
+              },
             ),
           ),
           const SizedBox(
@@ -56,7 +61,11 @@ class Homepage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14)),
                     backgroundColor: ColorManager.lightGreen),
-                onPressed: () {},
+                onPressed: () async {
+                  final result = await NetworkService()
+                      .getPostApiResponse(Inputvalue.value);
+                  debugPrint(result.toString());
+                },
                 child: Text(
                   StringManager.summerize,
                   style: getRegularTextStyle(
@@ -74,4 +83,8 @@ class Homepage extends StatelessWidget {
       ),
     );
   }
+}
+
+class Inputvalue {
+  static String value = "";
 }
