@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quicksummary/repository/wrapper.dart';
 import 'package:quicksummary/resources/theme_manager.dart';
 import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
+import 'package:quicksummary/view/homepage/widgets/input_field.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         StreamProvider<User?>.value(
-            value: AuthService().authState, initialData: null)
+            value: AuthService().authState, initialData: null),
+        ChangeNotifierProvider<Textformfield>(
+            create: ((context) => Textformfield()))
       ],
       child: MaterialApp(
         theme: getApplicationThemeData(),

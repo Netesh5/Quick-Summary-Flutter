@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quicksummary/data/network/base_network_service.dart';
 import 'package:http/http.dart' as http;
@@ -19,8 +20,9 @@ class NetworkService extends BaseNetworkService {
   Future getPostApiResponse(data) async {
     try {
       // final url = Uri.parse("https://api.openai.com/v1/completions");
-      final url =
-          Uri.parse("https://gpt-summarization.p.rapidapi.com/summarize");
+      // final url =
+      //     Uri.parse("https://gpt-summarization.p.rapidapi.com/summarize");
+      final url = Uri.parse("https://portal.ayfie.com/api/summarize");
       final response = await http.post(url,
           headers: Headers.header,
           body: jsonEncode({
@@ -33,13 +35,21 @@ class NetworkService extends BaseNetworkService {
             // "frequency_penalty": 0.0,
             // "presence_penalty": 0.0,
             // "stop": [" Human:", " AI:"]
+
+            // -------
+            // "text": data,
+            // "num_sentences": 3,
+            // -------
+            "language": "auto",
             "text": data,
-            "num_sentences": 3,
+            "min_length": 5,
+            "max_length": 100
           }));
       final newResponse = jsonDecode(response.body.toString());
       // debugPrint(newResponse.toString());
-      final result = newResponse['summary'];
-      debugPrint(result);
+      //final result = newResponse['summary'];
+      final result = newResponse;
+      debugPrint(result.toString());
     } on SocketException catch (e) {
       throw FetchDataException("No Internet Connection");
     }

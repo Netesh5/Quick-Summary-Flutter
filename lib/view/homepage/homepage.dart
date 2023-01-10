@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quicksummary/data/network/network_service.dart';
@@ -9,10 +10,9 @@ import 'package:quicksummary/resources/textStyle_manager.dart';
 import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
 
 import 'widgets/appbar.dart';
+import 'widgets/input_field.dart';
 
 class Homepage extends StatelessWidget {
-  TextEditingController controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     UserDetail(context: context).getUserDetail();
@@ -36,19 +36,7 @@ class Homepage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              textAlign: TextAlign.justify,
-              controller: controller,
-              cursorColor: ColorManager.lightGreen,
-              decoration: const InputDecoration(
-                label: Text(StringManager.labelText),
-              ),
-              minLines: 5,
-              maxLines: 20,
-              onChanged: (value) {
-                Inputvalue.value = controller.text;
-              },
-            ),
+            child: Textformfield().InputField(),
           ),
           const SizedBox(
             height: 20,
@@ -63,9 +51,7 @@ class Homepage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14)),
                     backgroundColor: ColorManager.lightGreen),
                 onPressed: () async {
-                  final result = await NetworkService()
-                      .getPostApiResponse(Inputvalue.value);
-                  debugPrint(result.toString());
+                  await NetworkService().getPostApiResponse(Inputvalue.value);
                 },
                 child: Text(
                   StringManager.summerize,
@@ -84,8 +70,4 @@ class Homepage extends StatelessWidget {
       ),
     );
   }
-}
-
-class Inputvalue {
-  static String value = "";
 }
