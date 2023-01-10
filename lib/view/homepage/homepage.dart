@@ -37,6 +37,7 @@ class Homepage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              textAlign: TextAlign.justify,
               controller: controller,
               cursorColor: ColorManager.lightGreen,
               decoration: const InputDecoration(
