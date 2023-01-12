@@ -9,4 +9,6 @@ class StringManager {
   static final greeting = "Good ${Greeting()}";
   static const labelText = "Enter Text";
   static const summerize = "Summerize";
+  static const minLength = "Min Length";
+  static const maxLength = "Max Length";
 }

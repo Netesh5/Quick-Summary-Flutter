@@ -38,6 +38,13 @@ class Homepage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Textformfield().InputField(),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Textformfield().minLength(context),
+              Textformfield().maxLength(context),
+            ],
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -51,7 +58,11 @@ class Homepage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14)),
                     backgroundColor: ColorManager.lightGreen),
                 onPressed: () async {
-                  await NetworkService().getPostApiResponse(Inputvalue.value);
+                  if (Textformfield.formkey.currentState!.validate() &
+                      Textformfield.formkey2.currentState!.validate() &
+                      Textformfield.formkey3.currentState!.validate()) {
+                    await NetworkService().getPostApiResponse(Inputvalue.value);
+                  }
                 },
                 child: Text(
                   StringManager.summerize,
