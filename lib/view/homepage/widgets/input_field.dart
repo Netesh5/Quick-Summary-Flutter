@@ -17,17 +17,18 @@ class Textformfield with ChangeNotifier {
           controller: controller,
           cursorColor: ColorManager.lightGreen,
           textInputAction: TextInputAction.done,
-          decoration: InputDecoration(
-            counterText: count.toString(),
-            label: const Text(StringManager.labelText),
-          ),
           minLines: 5,
           maxLines: 20,
           onChanged: (value) {
             Inputvalue.value = controller.text;
-            count = Inputvalue.value.length;
+            count = controller.text.length;
+
             notifyListeners();
           },
+          decoration: InputDecoration(
+            counterText: count.toString(),
+            label: const Text(StringManager.labelText),
+          ),
           validator: (value) {
             if (value!.isEmpty) {
               return "Field cannot be empty";
@@ -53,7 +54,6 @@ class Textformfield with ChangeNotifier {
             ),
             onChanged: (value) {
               Inputvalue.minLength = controller.text;
-
               notifyListeners();
             },
             validator: (value) {
