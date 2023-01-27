@@ -21,35 +21,13 @@ class NetworkService extends BaseNetworkService {
   // ignore: non_constant_identifier_names
   Future getPostApiResponse(data) async {
     try {
-      // final url = Uri.parse("https://api.openai.com/v1/completions");
-      // final url =
-      //     Uri.parse("https://gpt-summarization.p.rapidapi.com/summarize");
-      final url = Uri.parse("https://portal.ayfie.com/api/summarize");
+      final url = Uri.parse(
+          "https://text-analysis12.p.rapidapi.com/summarize-text/api/v1.1");
       final response = await http.post(url,
           headers: Headers.header,
-          body: jsonEncode({
-            // "model": "text-davinci-003",
-            // // ignore: prefer_interpolation_to_compose_strings
-            // "prompt": "Summerize the following \n" + data,
-            // "temperature": 0,
-            // "max_tokens": 100,
-            // "top_p": 1.0,
-            // "frequency_penalty": 0.0,
-            // "presence_penalty": 0.0,
-            // "stop": [" Human:", " AI:"]
-
-            // -------
-            // "text": data,
-            // "num_sentences": 3,
-            // -------
-            "language": "auto",
-            "text": data,
-            "min_length": Inputvalue.minLength ?? 50,
-            "max_length": Inputvalue.maxLength,
-          }));
+          body: jsonEncode(
+              {"language": "english", "summary_percent": 50, "text": data}));
       final newResponse = jsonDecode(response.body.toString());
-      // debugPrint(newResponse.toString());
-      //final result = newResponse['summary'];
 
       result = newResponse;
       debugPrint(result.toString());

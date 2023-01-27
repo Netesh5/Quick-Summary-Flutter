@@ -12,7 +12,7 @@ class Routes {
       case RoutesName.resultScreen:
         return MaterialPageRoute(
             builder: (context) => ResultScreen(
-                  result: NetworkService.result?["result"],
+                  result: NetworkService.result?["summary"],
                 ));
       default:
         return MaterialPageRoute(builder: ((context) {
