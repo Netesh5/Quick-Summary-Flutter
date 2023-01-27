@@ -25,8 +25,11 @@ class NetworkService extends BaseNetworkService {
           "https://text-analysis12.p.rapidapi.com/summarize-text/api/v1.1");
       final response = await http.post(url,
           headers: Headers.header,
-          body: jsonEncode(
-              {"language": "english", "summary_percent": 50, "text": data}));
+          body: jsonEncode({
+            "language": "english",
+            "summary_percent": Inputvalue.percentage ?? 50,
+            "text": data
+          }));
       final newResponse = jsonDecode(response.body.toString());
 
       result = newResponse;

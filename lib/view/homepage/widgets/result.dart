@@ -20,16 +20,19 @@ class ResultScreen extends StatelessWidget {
 
 Widget InputField(String? result) {
   TextEditingController controller = TextEditingController(text: result);
-  return TextFormField(
-    //textAlign: TextAlign.justify,
-    controller: controller,
-    cursorColor: ColorManager.lightGreen,
-    textInputAction: TextInputAction.done,
-    minLines: 5,
-    maxLines: 20,
-    decoration: const InputDecoration(
-      // counterText: controller.text.length.toString(),
-      label: Text(StringManager.labelText),
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: TextFormField(
+      //textAlign: TextAlign.justify,
+      controller: controller,
+      cursorColor: ColorManager.lightGreen,
+      textInputAction: TextInputAction.done,
+      minLines: 5,
+      maxLines: 20,
+      decoration: const InputDecoration(
+        // counterText: controller.text.length.toString(),
+        label: Text(StringManager.labelText),
+      ),
     ),
   );
 }

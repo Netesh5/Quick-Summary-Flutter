@@ -38,21 +38,23 @@ class Textformfield with ChangeNotifier {
   }
 
   Widget minLength(BuildContext context) {
-    TextEditingController controller = TextEditingController();
+    TextEditingController controller = TextEditingController(text: "50");
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.4,
+      width: MediaQuery.of(context).size.width * 0.95,
       child: Form(
         key: formkey2,
         child: TextFormField(
             controller: controller,
             cursorColor: ColorManager.lightGreen,
             textInputAction: TextInputAction.done,
+            keyboardType: TextInputType.number,
             decoration: const InputDecoration(
-              label: Text(StringManager.minLength),
+              label: Text(StringManager.summaryPercentage),
             ),
             onChanged: (value) {
-              Inputvalue.minLength = controller.text;
-              notifyListeners();
+              controller.addListener(() {
+                Inputvalue.percentage = controller.text;
+              });
             },
             validator: (value) {
               if (value!.isEmpty) {
@@ -65,38 +67,38 @@ class Textformfield with ChangeNotifier {
     );
   }
 
-  Widget maxLength(BuildContext context) {
-    TextEditingController controller = TextEditingController();
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.4,
-      child: Form(
-        key: formkey3,
-        child: TextFormField(
-          controller: controller,
-          cursorColor: ColorManager.lightGreen,
-          textInputAction: TextInputAction.done,
-          decoration: const InputDecoration(
-            label: Text(StringManager.maxLength),
-          ),
-          onChanged: (value) {
-            Inputvalue.maxLength = controller.text;
-            notifyListeners();
-          },
-          validator: (value) {
-            if (value!.isEmpty) {
-              return "Field cannot be empty";
-            } else {
-              return null;
-            }
-          },
-        ),
-      ),
-    );
-  }
+  // Widget maxLength(BuildContext context) {
+  //   TextEditingController controller = TextEditingController();
+  //   return SizedBox(
+  //     width: MediaQuery.of(context).size.width * 0.4,
+  //     child: Form(
+  //       key: formkey3,
+  //       child: TextFormField(
+  //         controller: controller,
+  //         cursorColor: ColorManager.lightGreen,
+  //         textInputAction: TextInputAction.done,
+  //         decoration: const InputDecoration(
+  //           label: Text(StringManager.maxLength),
+  //         ),
+  //         onChanged: (value) {
+  //           Inputvalue.maxLength = controller.text;
+  //           notifyListeners();
+  //         },
+  //         validator: (value) {
+  //           if (value!.isEmpty) {
+  //             return "Field cannot be empty";
+  //           } else {
+  //             return null;
+  //           }
+  //         },
+  //       ),
+  //     ),
+  //   );
+  // }
 }
 
 class Inputvalue {
   static String value = "";
-  static String? minLength = "";
+  static String? percentage;
   static String maxLength = "";
 }

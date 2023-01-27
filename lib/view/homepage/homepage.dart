@@ -46,7 +46,7 @@ class Homepage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Textformfield().minLength(context),
-              Textformfield().maxLength(context),
+              //Textformfield().maxLength(context),
             ],
           ),
           const SizedBox(
@@ -63,8 +63,7 @@ class Homepage extends StatelessWidget {
                     backgroundColor: ColorManager.lightGreen),
                 onPressed: () async {
                   if (Textformfield.formkey.currentState!.validate() &
-                      Textformfield.formkey2.currentState!.validate() &
-                      Textformfield.formkey3.currentState!.validate()) {
+                      Textformfield.formkey2.currentState!.validate()) {
                     await NetworkService()
                         .getPostApiResponse(Inputvalue.value)
                         .then((value) => Navigator.pushNamed(
