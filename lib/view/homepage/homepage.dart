@@ -8,6 +8,7 @@ import 'package:quicksummary/resources/font_manager.dart';
 import 'package:quicksummary/resources/string_manager.dart';
 import 'package:quicksummary/resources/textStyle_manager.dart';
 import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
+import 'package:quicksummary/utils/routes/routes_name.dart';
 
 import 'widgets/appbar.dart';
 import 'widgets/input_field.dart';
@@ -64,7 +65,10 @@ class Homepage extends StatelessWidget {
                   if (Textformfield.formkey.currentState!.validate() &
                       Textformfield.formkey2.currentState!.validate() &
                       Textformfield.formkey3.currentState!.validate()) {
-                    await NetworkService().getPostApiResponse(Inputvalue.value);
+                    await NetworkService()
+                        .getPostApiResponse(Inputvalue.value)
+                        .then((value) => Navigator.pushNamed(
+                            context, RoutesName.resultScreen));
                   }
                 },
                 child: Text(

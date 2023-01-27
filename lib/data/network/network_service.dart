@@ -16,6 +16,7 @@ class NetworkService extends BaseNetworkService {
     throw UnimplementedError();
   }
 
+  static Map<String, dynamic>? result;
   @override
   // ignore: non_constant_identifier_names
   Future getPostApiResponse(data) async {
@@ -43,13 +44,14 @@ class NetworkService extends BaseNetworkService {
             // -------
             "language": "auto",
             "text": data,
-            "min_length": Inputvalue.minLength ?? 100,
+            "min_length": Inputvalue.minLength ?? 50,
             "max_length": Inputvalue.maxLength,
           }));
       final newResponse = jsonDecode(response.body.toString());
       // debugPrint(newResponse.toString());
       //final result = newResponse['summary'];
-      final result = newResponse;
+
+      result = newResponse;
       debugPrint(result.toString());
     } on SocketException catch (e) {
       throw FetchDataException("No Internet Connection");

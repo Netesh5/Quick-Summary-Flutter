@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quicksummary/repository/wrapper.dart';
 import 'package:quicksummary/resources/theme_manager.dart';
 import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
+import 'package:quicksummary/utils/routes/routes.dart';
 import 'package:quicksummary/view/homepage/widgets/input_field.dart';
 
 class MyApp extends StatelessWidget {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         theme: getApplicationThemeData(),
         debugShowCheckedModeBanner: false,
         home: const Wrapper(),
+        onGenerateRoute: Routes.GenerateRoutes,
       ),
     );
   }
