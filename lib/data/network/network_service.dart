@@ -43,7 +43,7 @@ class NetworkService extends BaseNetworkService {
             // -------
             "language": "auto",
             "text": data,
-            "min_length": Inputvalue.minLength,
+            "min_length": Inputvalue.minLength ?? 100,
             "max_length": Inputvalue.maxLength,
           }));
       final newResponse = jsonDecode(response.body.toString());

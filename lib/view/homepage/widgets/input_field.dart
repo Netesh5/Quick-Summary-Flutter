@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../resources/color_manager.dart';
 import '../../../resources/string_manager.dart';
 
@@ -21,13 +20,12 @@ class Textformfield with ChangeNotifier {
           maxLines: 20,
           onChanged: (value) {
             Inputvalue.value = controller.text;
-            count = controller.text.length;
-
+            count = value.length;
             notifyListeners();
           },
-          decoration: InputDecoration(
-            counterText: count.toString(),
-            label: const Text(StringManager.labelText),
+          decoration: const InputDecoration(
+            // counterText: controller.text.length.toString(),
+            label: Text(StringManager.labelText),
           ),
           validator: (value) {
             if (value!.isEmpty) {
@@ -99,6 +97,6 @@ class Textformfield with ChangeNotifier {
 
 class Inputvalue {
   static String value = "";
-  static String minLength = "";
+  static String? minLength = "";
   static String maxLength = "";
 }

@@ -11,4 +11,5 @@ class StringManager {
   static const summerize = "Summerize";
   static const minLength = "Min Length";
   static const maxLength = "Max Length";
+  static const summarizedText = "Summarized Text";
 }
