@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:quicksummary/data/network/base_network_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:quicksummary/data/network/constant/constant.dart';
+import 'package:quicksummary/utils/loading_indicator.dart';
 import 'package:quicksummary/view/homepage/widgets/input_field.dart';
 
 import '../app_exception.dart';
@@ -37,6 +38,7 @@ class NetworkService extends BaseNetworkService {
     } on SocketException catch (e) {
       throw FetchDataException("No Internet Connection");
     }
+    LoadingIndicator().summarizenotloading();
   }
   //value
 }

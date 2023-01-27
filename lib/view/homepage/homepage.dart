@@ -8,6 +8,7 @@ import 'package:quicksummary/resources/font_manager.dart';
 import 'package:quicksummary/resources/string_manager.dart';
 import 'package:quicksummary/resources/textStyle_manager.dart';
 import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
+import 'package:quicksummary/utils/loading_indicator.dart';
 import 'package:quicksummary/utils/routes/routes_name.dart';
 
 import 'widgets/appbar.dart';
@@ -64,17 +65,21 @@ class Homepage extends StatelessWidget {
                 onPressed: () async {
                   if (Textformfield.formkey.currentState!.validate() &
                       Textformfield.formkey2.currentState!.validate()) {
+                    LoadingIndicator().summarizeloading();
                     await NetworkService()
                         .getPostApiResponse(Inputvalue.value)
                         .then((value) => Navigator.pushNamed(
                             context, RoutesName.resultScreen));
                   }
                 },
-                child: Text(
-                  StringManager.summerize,
-                  style: getRegularTextStyle(
-                      fontSize: FontSizeManager.f18, color: ColorManager.white),
-                )),
+                child: LoadingIndicator().isLoading
+                    ? LoadingIndicator().loading()
+                    : Text(
+                        StringManager.summerize,
+                        style: getRegularTextStyle(
+                            fontSize: FontSizeManager.f18,
+                            color: ColorManager.white),
+                      )),
           )),
           IconButton(
               onPressed: () async {

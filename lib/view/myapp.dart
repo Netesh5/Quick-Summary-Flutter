@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quicksummary/repository/wrapper.dart';
 import 'package:quicksummary/resources/theme_manager.dart';
 import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
+import 'package:quicksummary/utils/loading_indicator.dart';
 import 'package:quicksummary/utils/routes/routes.dart';
 import 'package:quicksummary/view/homepage/widgets/input_field.dart';
 
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
         StreamProvider<User?>.value(
             value: AuthService().authState, initialData: null),
         ChangeNotifierProvider<Textformfield>(
-            create: ((context) => Textformfield()))
+            create: ((context) => Textformfield())),
+        ChangeNotifierProvider<LoadingIndicator>(
+            create: ((context) => LoadingIndicator()))
       ],
       child: MaterialApp(
         theme: getApplicationThemeData(),
