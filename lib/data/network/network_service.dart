@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+
 import 'package:quicksummary/data/network/base_network_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:quicksummary/data/network/constant/constant.dart';
@@ -34,7 +33,6 @@ class NetworkService extends BaseNetworkService {
       final newResponse = jsonDecode(response.body.toString());
 
       result = newResponse;
-      debugPrint(result.toString());
     } on SocketException catch (e) {
       throw FetchDataException("No Internet Connection");
     }

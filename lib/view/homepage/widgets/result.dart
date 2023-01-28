@@ -1,25 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:quicksummary/data/network/network_service.dart';
+import 'package:quicksummary/resources/font_manager.dart';
 import 'package:quicksummary/resources/string_manager.dart';
+import 'package:quicksummary/resources/textstyle_manager.dart';
+import 'package:quicksummary/utils/switch_button.dart';
 
 import '../../../resources/color_manager.dart';
 
 class ResultScreen extends StatelessWidget {
-  String? result;
-  ResultScreen({this.result});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(StringManager.summarizedText),
+        title: Text(
+          StringManager.summarizedText,
+          style: getRegularTextStyle(
+              fontSize: FontSizeManager.f18,
+              color: ColorManager.darkFontcolor,
+              fontWeight: FontWeightManager.bold),
+        ),
       ),
-      body: InputField(result),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Spacer(),
+              const Text(StringManager.showPoints),
+              switchBtn()
+            ],
+          ),
+          InputField(),
+        ],
+      ),
     );
   }
 }
 
-Widget InputField(String? result) {
-  TextEditingController controller = TextEditingController(text: result);
+Widget InputField() {
+  TextEditingController controller = TextEditingController(
+      text: SwitchBtn().ispointon
+          ? NetworkService.result!["sentences"]
+          : NetworkService.result?["summary"]);
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(

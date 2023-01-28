@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quicksummary/data/network/network_service.dart';
@@ -7,6 +6,8 @@ import 'package:quicksummary/resources/color_manager.dart';
 import 'package:quicksummary/resources/font_manager.dart';
 import 'package:quicksummary/resources/string_manager.dart';
 import 'package:quicksummary/resources/textStyle_manager.dart';
+
+import 'package:quicksummary/resources/value_manger.dart';
 import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
 import 'package:quicksummary/utils/loading_indicator.dart';
 import 'package:quicksummary/utils/routes/routes_name.dart';
@@ -49,6 +50,11 @@ class Homepage extends StatelessWidget {
               Textformfield().minLength(context),
               //Textformfield().maxLength(context),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(PaddingManager.p12),
+            child: Text(StringManager.experiment,
+                style: TextStyle(fontSize: FontSizeManager.f10)),
           ),
           const SizedBox(
             height: 20,

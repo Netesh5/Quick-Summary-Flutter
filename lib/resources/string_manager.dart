@@ -13,4 +13,7 @@ class StringManager {
   // static const maxLength = "Max Length";
   static const summaryPercentage = "Summary Percentage";
   static const summarizedText = "Summarized Text";
+  static const experiment =
+      "Experiment with summary percentage for better result. ";
+  static const showPoints = "Show Points";
 }

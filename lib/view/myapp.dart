@@ -6,6 +6,7 @@ import 'package:quicksummary/resources/theme_manager.dart';
 import 'package:quicksummary/services/firebase_service/firebase_auth.dart';
 import 'package:quicksummary/utils/loading_indicator.dart';
 import 'package:quicksummary/utils/routes/routes.dart';
+import 'package:quicksummary/utils/switch_button.dart';
 import 'package:quicksummary/view/homepage/widgets/input_field.dart';
 
 class MyApp extends StatelessWidget {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Textformfield>(
             create: ((context) => Textformfield())),
         ChangeNotifierProvider<LoadingIndicator>(
-            create: ((context) => LoadingIndicator()))
+            create: ((context) => LoadingIndicator())),
+        ChangeNotifierProvider<SwitchBtn>(create: ((context) => SwitchBtn()))
       ],
       child: MaterialApp(
         theme: getApplicationThemeData(),
