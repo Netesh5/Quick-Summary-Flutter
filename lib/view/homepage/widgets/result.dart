@@ -24,7 +24,7 @@ class ResultScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Spacer(),
+              const Spacer(),
               const Text(StringManager.showPoints),
               switchBtn()
             ],
@@ -37,10 +37,11 @@ class ResultScreen extends StatelessWidget {
 }
 
 Widget InputField() {
-  TextEditingController controller = TextEditingController(
-      text: SwitchBtn().ispointon
-          ? NetworkService.result!["sentences"]
-          : NetworkService.result?["summary"]);
+  SwitchBtn btn = SwitchBtn();
+  String summary = NetworkService.result!["summary"];
+  List sentences = NetworkService.result!["sentences"];
+  TextEditingController controller =
+      TextEditingController(text: btn.ispointon ? sentences[0] : summary);
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
