@@ -29,7 +29,7 @@ class ResultScreen extends StatelessWidget {
               switchBtn()
             ],
           ),
-          InputField(),
+          InputField(), //field
         ],
       ),
     );
