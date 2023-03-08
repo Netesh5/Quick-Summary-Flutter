@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quicksummary/resources/color_manager.dart';
-import 'package:quicksummary/resources/value_manger.dart';
+
 import '../../../repository/user_details.dart';
 import '../../../resources/font_manager.dart';
 import '../../../resources/string_manager.dart';
@@ -9,7 +9,6 @@ import '../../../resources/textStyle_manager.dart';
 // ignore: non_constant_identifier_names
 AppBar Appbar() {
   return AppBar(
-      centerTitle: true,
       title: Row(
         children: [
           CircleAvatar(

@@ -54,10 +54,12 @@ class Homepage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(PaddingManager.p12),
             child: Text(StringManager.experiment,
-                style: TextStyle(fontSize: FontSizeManager.f10)),
+                style: TextStyle(
+                    fontSize: FontSizeManager.f10,
+                    color: ColorManager.lightGrey)),
           ),
           const SizedBox(
-            height: 20,
+            height: 100,
           ),
           Center(
               child: SizedBox(
