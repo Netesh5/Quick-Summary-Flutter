@@ -40,6 +40,13 @@ Widget InputField() {
   SwitchBtn btn = SwitchBtn();
   String summary = NetworkService.result!["summary"];
   List sentences = NetworkService.result!["sentences"];
+
+  getPoints() {
+    return List.generate(sentences.length, (index) => sentences[index] + "\n");
+  }
+
+  debugPrint(getPoints().toString());
+
   TextEditingController controller =
       TextEditingController(text: btn.ispointon ? sentences[0] : summary);
   return Padding(
@@ -48,7 +55,7 @@ Widget InputField() {
       //textAlign: TextAlign.justify,
       controller: controller,
       cursorColor: ColorManager.lightGreen,
-      textInputAction: TextInputAction.done,
+      textInputAction: TextInputAction.newline,
       minLines: 5,
       maxLines: 20,
       decoration: const InputDecoration(

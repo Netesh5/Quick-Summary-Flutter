@@ -9,6 +9,7 @@ import '../../../resources/textStyle_manager.dart';
 // ignore: non_constant_identifier_names
 AppBar Appbar() {
   return AppBar(
+      centerTitle: false,
       title: Row(
         children: [
           CircleAvatar(
@@ -30,7 +31,7 @@ AppBar Appbar() {
                 Text(
                   StringManager.greeting,
                   style: getRegularTextStyle(
-                      fontSize: FontSizeManager.f14,
+                      fontSize: FontSizeManager.f12,
                       color: ColorManager.darkFontcolor),
                 ),
                 Text(

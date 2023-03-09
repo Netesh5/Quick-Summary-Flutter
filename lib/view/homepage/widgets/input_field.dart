@@ -8,20 +8,17 @@ class Textformfield with ChangeNotifier {
   static final formkey3 = GlobalKey<FormState>();
   int count = 0;
   Widget InputField() {
-    TextEditingController controller = TextEditingController();
     return Form(
       key: formkey,
       child: TextFormField(
-          //textAlign: TextAlign.justify,
-          controller: controller,
           cursorColor: ColorManager.lightGreen,
-          textInputAction: TextInputAction.done,
+          textInputAction: TextInputAction.newline,
           minLines: 5,
           maxLines: 20,
           onChanged: (value) {
-            Inputvalue.value = controller.text;
-            count = value.length;
+            Inputvalue.value = value;
             notifyListeners();
+            // count = value.length;
           },
           decoration: const InputDecoration(
             // counterText: controller.text.length.toString(),
@@ -66,35 +63,6 @@ class Textformfield with ChangeNotifier {
       ),
     );
   }
-
-  // Widget maxLength(BuildContext context) {
-  //   TextEditingController controller = TextEditingController();
-  //   return SizedBox(
-  //     width: MediaQuery.of(context).size.width * 0.4,
-  //     child: Form(
-  //       key: formkey3,
-  //       child: TextFormField(
-  //         controller: controller,
-  //         cursorColor: ColorManager.lightGreen,
-  //         textInputAction: TextInputAction.done,
-  //         decoration: const InputDecoration(
-  //           label: Text(StringManager.maxLength),
-  //         ),
-  //         onChanged: (value) {
-  //           Inputvalue.maxLength = controller.text;
-  //           notifyListeners();
-  //         },
-  //         validator: (value) {
-  //           if (value!.isEmpty) {
-  //             return "Field cannot be empty";
-  //           } else {
-  //             return null;
-  //           }
-  //         },
-  //       ),
-  //     ),
-  //   );
-  // }
 }
 
 class Inputvalue {
