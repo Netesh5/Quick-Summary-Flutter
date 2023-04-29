@@ -7,9 +7,11 @@ class SwitchBtn with ChangeNotifier {
   void toogleSwitch(bool value) {
     if (ispointon == false) {
       ispointon = true;
+      debugPrint("button on");
       notifyListeners();
     } else {
       ispointon = false;
+      debugPrint("button off");
       notifyListeners();
     }
   }

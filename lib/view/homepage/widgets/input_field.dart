@@ -7,10 +7,12 @@ class Textformfield with ChangeNotifier {
   static final formkey2 = GlobalKey<FormState>();
   static final formkey3 = GlobalKey<FormState>();
   int count = 0;
+  // ignore: non_constant_identifier_names
   Widget InputField() {
     return Form(
       key: formkey,
       child: TextFormField(
+          enableInteractiveSelection: true,
           cursorColor: ColorManager.lightGreen,
           textInputAction: TextInputAction.newline,
           minLines: 5,

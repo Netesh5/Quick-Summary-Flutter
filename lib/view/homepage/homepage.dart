@@ -16,6 +16,8 @@ import 'widgets/appbar.dart';
 import 'widgets/input_field.dart';
 
 class Homepage extends StatelessWidget {
+  const Homepage({super.key});
+
   @override
   Widget build(BuildContext context) {
     UserDetail(context: context).getUserDetail();

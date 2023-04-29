@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quicksummary/data/network/network_service.dart';
 import 'package:quicksummary/resources/font_manager.dart';
 import 'package:quicksummary/resources/string_manager.dart';
@@ -8,6 +9,8 @@ import 'package:quicksummary/utils/switch_button.dart';
 import '../../../resources/color_manager.dart';
 
 class ResultScreen extends StatelessWidget {
+  const ResultScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,26 +32,26 @@ class ResultScreen extends StatelessWidget {
               switchBtn()
             ],
           ),
-          InputField(), //field
+          InputField(context), //field
         ],
       ),
     );
   }
 }
 
-Widget InputField() {
-  SwitchBtn btn = SwitchBtn();
+// ignore: non_constant_identifier_names
+Widget InputField(BuildContext context) {
+  final btn = Provider.of<SwitchBtn>(context).ispointon;
   String summary = NetworkService.result!["summary"];
   List sentences = NetworkService.result!["sentences"];
 
   getPoints() {
-    return List.generate(sentences.length, (index) => sentences[index] + "\n");
+    return List.generate(
+        sentences.length, (index) => sentences[index] + "\n\n");
   }
 
-  debugPrint(getPoints().toString());
-
   TextEditingController controller =
-      TextEditingController(text: btn.ispointon ? sentences[0] : summary);
+      TextEditingController(text: btn ? getPoints().toString() : summary);
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
